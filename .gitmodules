@@ -1,0 +1,3 @@
+[submodule "src/NcnnDotNet"]
+	path = src/NcnnDotNet
+	url = https://github.com/takuya-takeuchi/NcnnDotNet.git
