@@ -118,7 +118,7 @@
         </member>
         <member name="T:UltraFaceDotNet.UltraFaceParameter">
             <summary>
-            UltraFace のパラメータを表現します。このクラスは継承できません。
+            <see cref="T:UltraFaceDotNet.UltraFace"/> のパラメータを表現します。このクラスは継承できません。
             </summary>
         </member>
         <member name="P:UltraFaceDotNet.UltraFaceParameter.BinFilePath">
