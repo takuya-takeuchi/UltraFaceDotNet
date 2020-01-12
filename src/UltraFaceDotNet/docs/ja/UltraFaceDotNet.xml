@@ -103,7 +103,7 @@
         </member>
         <member name="M:UltraFaceDotNet.UltraFace.Detect(NcnnDotNet.Mat)">
             <summary>
-            指定した画像内の全ての顔に対応する顔の位置の列挙可能なコレクションを返します。。
+            指定した画像内の全ての顔に対応する顔の位置の列挙可能なコレクションを返します。
             </summary>
             <param name="image">顔を含む画像。画像には複数の顔を含めることができます。</param>
             <returns>指定した画像内の全ての顔に対応する顔の位置の列挙可能なコレクション。</returns>
