@@ -1,0 +1,165 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>UltraFaceDotNet</name>
+    </assembly>
+    <members>
+        <member name="T:UltraFaceDotNet.DisposableObject">
+            <summary>
+            マネージまたはアンマネージ リソースを持つクラスを表します。
+            </summary>
+        </member>
+        <member name="P:UltraFaceDotNet.DisposableObject.IsDisposed">
+            <summary>
+            インスタンスが破棄されているかどうかを示す値を取得します。
+            </summary>
+            <returns>インスタンスが破棄されている場合は true。それ以外の場合は false。</returns>
+        </member>
+        <member name="M:UltraFaceDotNet.DisposableObject.ThrowIfDisposed">
+            <summary>
+            オブジェクトが破棄されている場合、<see cref="T:System.ObjectDisposedException"/> がスローされます。
+            </summary>
+        </member>
+        <member name="M:UltraFaceDotNet.DisposableObject.DisposeManaged">
+            <summary>
+            マネージ リソースを解放します。
+            </summary>
+        </member>
+        <member name="M:UltraFaceDotNet.DisposableObject.DisposeUnmanaged">
+            <summary>
+            アンマネージ リソースを解放します。
+            </summary>
+        </member>
+        <member name="M:UltraFaceDotNet.DisposableObject.Dispose">
+            <summary>
+            この <see cref="T:UltraFaceDotNet.DisposableObject"/> によって使用されている全てのリソースを解放します。
+            </summary>
+        </member>
+        <member name="M:UltraFaceDotNet.DisposableObject.Dispose(System.Boolean)">
+            <summary>
+            この <see cref="T:UltraFaceDotNet.DisposableObject"/> によって使用されている全てのリソースを解放します。
+            </summary>
+            <param name="disposing"><see cref="M:System.IDisposable.Dispose"/> メソッドが呼ばれたかどうかを示す値。</param>
+        </member>
+        <member name="T:UltraFaceDotNet.FaceInfo">
+            <summary>
+            顔の左端、上端、右端、下端位置を説明します。このクラスは継承できません。
+            </summary>
+        </member>
+        <member name="P:UltraFaceDotNet.FaceInfo.X1">
+            <summary>
+            顔の矩形の左側の X 軸の値を取得します。
+            </summary>
+        </member>
+        <member name="P:UltraFaceDotNet.FaceInfo.Y1">
+            <summary>
+            顔の矩形の上側の Y 軸の値を取得します。
+            </summary>
+        </member>
+        <member name="P:UltraFaceDotNet.FaceInfo.X2">
+            <summary>
+            顔の矩形の右側の X 軸の値を取得します。
+            </summary>
+        </member>
+        <member name="P:UltraFaceDotNet.FaceInfo.Y2">
+            <summary>
+            顔の矩形の下側の Y 軸の値を取得します。
+            </summary>
+        </member>
+        <member name="P:UltraFaceDotNet.FaceInfo.Score">
+            <summary>
+            顔の矩形のスコアを取得します。
+            </summary>
+        </member>
+        <member name="T:UltraFaceDotNet.NonMaximumSuppressionMode">
+            <summary>
+            Non Maximum Suppression のモードを指定します。
+            </summary>
+        </member>
+        <member name="F:UltraFaceDotNet.NonMaximumSuppressionMode.Hard">
+            <summary>
+            ハード NMS を示します。
+            </summary>
+        </member>
+        <member name="F:UltraFaceDotNet.NonMaximumSuppressionMode.Blending">
+            <summary>
+            ブレンディング NMS を示します。 Blaze Faze (Google Research) の論文で提案された、一時的なジッターの最小化を狙うミックス NMS です。
+            </summary>
+        </member>
+        <member name="T:UltraFaceDotNet.UltraFace">
+            <summary>
+            顔を探索するメソッドを提供します。このクラスは継承できません。
+            </summary>
+        </member>
+        <member name="M:UltraFaceDotNet.UltraFace.Create(UltraFaceDotNet.UltraFaceParameter)">
+            <summary>
+            パラメータを指定して、<see cref="T:UltraFaceDotNet.UltraFace"/> クラスの新しいインスタンスを初期化します。
+            </summary>
+            <param name="parameter">パラメータ。</param>
+            <returns>このメソッドが作成した <see cref="T:UltraFaceDotNet.UltraFace"/>。</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="parameter"/> が null です。</exception>
+            <exception cref="T:System.ArgumentException">モデル バイナリ ファイルが null または空白です。またはパラメータ ファイルが null または空白です。</exception>
+            <exception cref="T:System.IO.FileNotFoundException">モデル バイナリ ファイルが見つかりません。またはパラメータ ファイルが見つかりません。</exception>
+        </member>
+        <member name="M:UltraFaceDotNet.UltraFace.Detect(NcnnDotNet.Mat)">
+            <summary>
+            指定した画像内の全ての顔に対応する顔の位置の列挙可能なコレクションを返します。。
+            </summary>
+            <param name="image">顔を含む画像。画像には複数の顔を含めることができます。</param>
+            <returns>指定した画像内の全ての顔に対応する顔の位置の列挙可能なコレクション。</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="image"/> が null です。</exception>
+            <exception cref="T:System.ArgumentException"><paramref name="image"/> が空です。</exception>
+            <exception cref="T:System.ObjectDisposedException"><paramref name="image"/> またはこのオブジェクトは破棄されています。</exception>
+        </member>
+        <member name="M:UltraFaceDotNet.UltraFace.DisposeUnmanaged">
+            <summary>
+            アンマネージ リソースを解放します。
+            </summary>
+        </member>
+        <member name="T:UltraFaceDotNet.UltraFaceParameter">
+            <summary>
+            UltraFace のパラメータを表現します。このクラスは継承できません。
+            </summary>
+        </member>
+        <member name="P:UltraFaceDotNet.UltraFaceParameter.BinFilePath">
+            <summary>
+            モデル バイナリ ファイルのファイル パスを取得または設定します。
+            </summary>
+        </member>
+        <member name="P:UltraFaceDotNet.UltraFaceParameter.ParamFilePath">
+            <summary>
+            パラメータ ファイルのファイル パスを取得または設定します。
+            </summary>
+        </member>
+        <member name="P:UltraFaceDotNet.UltraFaceParameter.InputWidth">
+            <summary>
+            リサイズ後の入力画像のピクセル幅を取得または設定します。
+            </summary>
+        </member>
+        <member name="P:UltraFaceDotNet.UltraFaceParameter.InputLength">
+            <summary>
+            リサイズ後の入力画像のピクセル高を取得または設定します。
+            </summary>
+        </member>
+        <member name="P:UltraFaceDotNet.UltraFaceParameter.NumThread">
+            <summary>
+            ニューラル ネットワーク処理に対するスレッド数を取得または設定します。既定は 4 です。
+            </summary>
+        </member>
+        <member name="P:UltraFaceDotNet.UltraFaceParameter.ScoreThreshold">
+            <summary>
+            顔の検出に対するスコアの閾値を取得または設定します。既定は 0.7f です。
+            </summary>
+        </member>
+        <member name="P:UltraFaceDotNet.UltraFaceParameter.IouThreshold">
+            <summary>
+            顔の検出に対する IoU (Intersection Of Union) の閾値を取得または設定します。既定は 0.3f です。
+            </summary>
+        </member>
+        <member name="P:UltraFaceDotNet.UltraFaceParameter.TopK">
+            <summary>
+            顔の検出上限を取得または設定します。既定は -1 です。
+            </summary>
+        </member>
+    </members>
+</doc>

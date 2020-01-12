@@ -5,9 +5,18 @@ This repository is porting https://github.com/Linzaer/Ultra-Light-Fast-Generic-F
 
 This package supports cross platform, Windows, Linux and MacOSX!!
 
+|Package|OS|x86|x64|ARM|ARM64|Nuget|
+|---|---|---|---|---|---|---|
+|UltraFaceDotNet (CPU)|Windows|-|✓|-|-|[![NuGet version](https://img.shields.io/nuget/v/UltraFaceDotNet.svg)](https://www.nuget.org/packages/UltraFaceDotNet)|
+||Linux|-|✓|-|-|[![NuGet version](https://img.shields.io/nuget/v/UltraFaceDotNet.svg)](https://www.nuget.org/packages/UltraFaceDotNet)|
+||OSX|-|✓|-|-|[![NuGet version](https://img.shields.io/nuget/v/UltraFaceDotNet.svg)](https://www.nuget.org/packages/UltraFaceDotNet)|
+|UltraFaceDotNet (GPU)|Windows|-|✓|-|-|[![NuGet version](https://img.shields.io/nuget/v/UltraFaceDotNet.GPU.svg)](https://www.nuget.org/packages/UltraFaceDotNet.GPU)|
+||Linux|-|✓|-|-|[![NuGet version](https://img.shields.io/nuget/v/UltraFaceDotNet.GPU.svg)](https://www.nuget.org/packages/UltraFaceDotNet.GPU)|
+||OSX|-|✓|-|-|[![NuGet version](https://img.shields.io/nuget/v/UltraFaceDotNet.GPU.svg)](https://www.nuget.org/packages/NcnnDotNet.GPU)|
+
 ## Demo
 
-<img src="examples/Demo/images/image.jpg"/>
+<img src="examples/Demo/images/image.jpg" width="480"/>
 
 ## Dependencies Libraries and Products
 

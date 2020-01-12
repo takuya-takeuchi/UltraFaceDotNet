@@ -1,0 +1,32 @@
+﻿<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>UltraFaceDotNet.GPU</id>
+    <version>1.0.0.0</version>
+    <title>UltraFaceDotNet for GPU</title>
+    <authors>Takuya Takeuchi</authors>
+    <owners>Takuya Takeuchi</owners>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <license type="file">LICENSE.txt</license>
+    <projectUrl>https://github.com/takuya-takeuchi/UltraFaceDotNet</projectUrl>
+    <iconUrl>https://github.com/takuya-takeuchi/UltraFaceDotNet/blob/master/nuget/face128.png?raw=true</iconUrl>
+    <description>C# version of Ultra-Light-Fast-Generic-Face-Detector-1MB</description>
+    <releaseNotes></releaseNotes>
+    <copyright>© Takuya Takeuchi 2019-2020</copyright>
+    <tags>.net machinelearning face-detection</tags>
+    <serviceable>true</serviceable>
+    <dependencies>
+      <group targetFramework="netstandard2.0">
+        <dependency id="NcnnDotNet.GPU" version="0.0.0.20200106" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="..\..\src\UltraFaceDotNet\bin\Release\netstandard2.0\UltraFaceDotNet.dll" target="lib\netstandard2.0" />
+    <file src="..\..\src\UltraFaceDotNet\bin\Release\netstandard2.0\UltraFaceDotNet.xml" target="lib\netstandard2.0" />
+    <file src="..\..\src\UltraFaceDotNet\docs\ja\*.xml" target="lib\netstandard2.0\ja" />
+    
+    <!-- license -->
+    <file src="..\..\LICENSE.txt" target="" /> 
+  </files>
+</package>

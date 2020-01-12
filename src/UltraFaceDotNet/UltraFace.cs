@@ -1,11 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using NcnnDotNet;
 
 namespace UltraFaceDotNet
 {
 
+    /// <summary>
+    /// Provides the method to find face methods. This class cannot be inherited.
+    /// </summary>
     public sealed class UltraFace : DisposableObject
     {
 
@@ -63,9 +67,6 @@ namespace UltraFaceDotNet
 
         private UltraFace(UltraFaceParameter parameter)
         {
-            if (parameter == null)
-                throw new ArgumentNullException(nameof(parameter));
-
             this._NumThread = parameter.NumThread;
             this._TopK = parameter.TopK;
             this._ScoreThreshold = parameter.ScoreThreshold;
@@ -91,31 +92,31 @@ namespace UltraFaceDotNet
                 var scaleW = this._InW / this._ShrinkageSize[0][index];
                 var scaleH = this._InH / this._ShrinkageSize[1][index];
                 for (var j = 0; j < this._FeatureMapSize[1][index]; j++)
-                for (var i = 0; i < this._FeatureMapSize[0][index]; i++)
-                {
-                    var xCenter = (float) ((i + 0.5) / scaleW);
-                    var yCenter = (float) ((j + 0.5) / scaleH);
-
-                    foreach (var k in this._MinBoxes[index])
+                    for (var i = 0; i < this._FeatureMapSize[0][index]; i++)
                     {
-                        var w = k / this._InW;
-                        var h = k / this._InH;
+                        var xCenter = (float)((i + 0.5) / scaleW);
+                        var yCenter = (float)((j + 0.5) / scaleH);
 
-                        this._Priors.Add(
-                            new[]
-                            {
+                        foreach (var k in this._MinBoxes[index])
+                        {
+                            var w = k / this._InW;
+                            var h = k / this._InH;
+
+                            this._Priors.Add(
+                                new[]
+                                {
                                 Clip(xCenter, 1),
                                 Clip(yCenter, 1),
                                 Clip(w, 1),
                                 Clip(h, 1)
-                            });
+                                });
+                        }
                     }
-                }
             }
 
             this._NumAnchors = this._Priors.Count;
 
-            this._UltraFace= new Net();
+            this._UltraFace = new Net();
             this._UltraFace.LoadParam(parameter.ParamFilePath);
             this._UltraFace.LoadModel(parameter.BinFilePath);
         }
@@ -124,21 +125,49 @@ namespace UltraFaceDotNet
 
         #region Methods
 
+        /// <summary>
+        /// Create a new instance of the <see cref="UltraFace"/> class with the specified parameter.
+        /// </summary>
+        /// <param name="parameter">The parameter.</param>
+        /// <returns>The <see cref="UltraFace"/> this method creates.</returns>
+        /// <exception cref="ArgumentNullException"><paramref name="parameter"/> is null.</exception>
+        /// <exception cref="ArgumentException">The model binary file is null or whitespace. Or the param file is null or whitespace.</exception>
+        /// <exception cref="FileNotFoundException">The model binary file is not found. Or the param file is not found.</exception>
         public static UltraFace Create(UltraFaceParameter parameter)
         {
+            if (parameter == null)
+                throw new ArgumentNullException(nameof(parameter));
+            if (string.IsNullOrWhiteSpace(parameter.BinFilePath))
+                throw new ArgumentException("The model binary file is null or whitespace", nameof(parameter.BinFilePath));
+            if (string.IsNullOrWhiteSpace(parameter.ParamFilePath))
+                throw new ArgumentException("The param file is null or whitespace", nameof(parameter.ParamFilePath));
+            if (!File.Exists(parameter.BinFilePath))
+                throw new FileNotFoundException("The model binary file is not found.");
+            if (!File.Exists(parameter.ParamFilePath))
+                throw new FileNotFoundException("The param file is not found.");
+
             return new UltraFace(parameter);
         }
 
-        public IEnumerable<FaceInfo> Detect(Mat img)
+        /// <summary>
+        /// Returns an enumerable collection of face location correspond to all faces in specified image.
+        /// </summary>
+        /// <param name="image">The image contains faces. The image can contain multiple faces.</param>
+        /// <returns>An enumerable collection of face location correspond to all faces in specified image.</returns>
+        /// <exception cref="ArgumentNullException"><paramref name="image"/> is null.</exception>
+        /// <exception cref="ArgumentException"><paramref name="image"/> is empty.</exception>
+        /// <exception cref="ObjectDisposedException"><paramref name="image"/> or this object is disposed.</exception>
+        public IEnumerable<FaceInfo> Detect(Mat image)
         {
-            if (img == null)
-                throw new ArgumentNullException(nameof(img));
+            if (image == null)
+                throw new ArgumentNullException(nameof(image));
 
-            img.ThrowIfDisposed();
+            this.ThrowIfDisposed();
+            image.ThrowIfDisposed();
 
             var faceList = new List<FaceInfo>();
-            if (Detect(img, faceList) != 0)
-                throw new ApplicationException();
+            if (Detect(image, faceList) != 0)
+                throw new ArgumentException("Image is empty.", nameof(image));
 
             return faceList.ToArray();
         }
@@ -164,20 +193,20 @@ namespace UltraFaceDotNet
             return (float)(x < 0 ? 0 : x > y ? y : x);
         }
 
-        private int Detect(Mat img, ICollection<FaceInfo> faceList)
+        private int Detect(Mat image, ICollection<FaceInfo> faceList)
         {
-            if (img.IsEmpty)
+            if (image.IsEmpty)
             {
                 Console.WriteLine("image is empty ,please check!");
                 return -1;
             }
 
-            this._ImageH = img.H;
-            this._ImageW = img.W;
+            this._ImageH = image.H;
+            this._ImageW = image.W;
 
             using (var @in = new Mat())
             {
-                Ncnn.ResizeBilinear(img, @in, this._InW, this._InH);
+                Ncnn.ResizeBilinear(image, @in, this._InW, this._InH);
 
                 var ncnnImg = @in;
                 ncnnImg.SubstractMeanNormalize(this._MeanVals, this._NormVals);
