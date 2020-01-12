@@ -1,0 +1,165 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>UltraFaceDotNet</name>
+    </assembly>
+    <members>
+        <member name="T:UltraFaceDotNet.DisposableObject">
+            <summary>
+            Represents a class which has managed or unmanaged resources.
+            </summary>
+        </member>
+        <member name="P:UltraFaceDotNet.DisposableObject.IsDisposed">
+            <summary>
+            Gets a value indicating whether this instance has been disposed.
+            </summary>
+            <returns>true if this instance has been disposed; otherwise, false.</returns>
+        </member>
+        <member name="M:UltraFaceDotNet.DisposableObject.ThrowIfDisposed">
+            <summary>
+            If this object is disposed, then <see cref="T:System.ObjectDisposedException"/> is thrown.
+            </summary>
+        </member>
+        <member name="M:UltraFaceDotNet.DisposableObject.DisposeManaged">
+            <summary>
+            Releases all managed resources.
+            </summary>
+        </member>
+        <member name="M:UltraFaceDotNet.DisposableObject.DisposeUnmanaged">
+            <summary>
+            Releases all unmanaged resources.
+            </summary>
+        </member>
+        <member name="M:UltraFaceDotNet.DisposableObject.Dispose">
+            <summary>
+            Releases all resources used by this <see cref="T:UltraFaceDotNet.DisposableObject"/>.
+            </summary>
+        </member>
+        <member name="M:UltraFaceDotNet.DisposableObject.Dispose(System.Boolean)">
+            <summary>
+            Releases all resources used by this <see cref="T:UltraFaceDotNet.DisposableObject"/>.
+            </summary>
+            <param name="disposing">Indicate value whether <see cref="M:System.IDisposable.Dispose"/> method was called.</param>
+        </member>
+        <member name="T:UltraFaceDotNet.FaceInfo">
+            <summary>
+            Describes the location of a face. This class cannot be inherited.
+            </summary>
+        </member>
+        <member name="P:UltraFaceDotNet.FaceInfo.X1">
+            <summary>
+            Gets the x-axis value of the left side of the rectangle of face.
+            </summary>
+        </member>
+        <member name="P:UltraFaceDotNet.FaceInfo.Y1">
+            <summary>
+            Gets the y-axis value of the top of the rectangle of face.
+            </summary>
+        </member>
+        <member name="P:UltraFaceDotNet.FaceInfo.X2">
+            <summary>
+            Gets the x-axis value of the right side of the rectangle of face.
+            </summary>
+        </member>
+        <member name="P:UltraFaceDotNet.FaceInfo.Y2">
+            <summary>
+            Gets the y-axis value of the bottom of the rectangle of face.
+            </summary>
+        </member>
+        <member name="P:UltraFaceDotNet.FaceInfo.Score">
+            <summary>
+            Gets the score of the rectangle of face.
+            </summary>
+        </member>
+        <member name="T:UltraFaceDotNet.NonMaximumSuppressionMode">
+            <summary>
+            Specifies the mode of Non Maximum Suppression.
+            </summary>
+        </member>
+        <member name="F:UltraFaceDotNet.NonMaximumSuppressionMode.Hard">
+            <summary>
+            Specifies that the hard nms.
+            </summary>
+        </member>
+        <member name="F:UltraFaceDotNet.NonMaximumSuppressionMode.Blending">
+            <summary>
+            Specifies that the blending nms. The mix nms was been proposed in paper blaze face, aims to minimize the temporal jitter. 
+            </summary>
+        </member>
+        <member name="T:UltraFaceDotNet.UltraFace">
+            <summary>
+            Provides the method to find face methods. This class cannot be inherited.
+            </summary>
+        </member>
+        <member name="M:UltraFaceDotNet.UltraFace.Create(UltraFaceDotNet.UltraFaceParameter)">
+            <summary>
+            Create a new instance of the <see cref="T:UltraFaceDotNet.UltraFace"/> class with the specified parameter.
+            </summary>
+            <param name="parameter">The parameter.</param>
+            <returns>The <see cref="T:UltraFaceDotNet.UltraFace"/> this method creates.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="parameter"/> is null.</exception>
+            <exception cref="T:System.ArgumentException">The model binary file is null or whitespace. Or the param file is null or whitespace.</exception>
+            <exception cref="T:System.IO.FileNotFoundException">The model binary file is not found. Or the param file is not found.</exception>
+        </member>
+        <member name="M:UltraFaceDotNet.UltraFace.Detect(NcnnDotNet.Mat)">
+            <summary>
+            Returns an enumerable collection of face location correspond to all faces in specified image.
+            </summary>
+            <param name="image">The image contains faces. The image can contain multiple faces.</param>
+            <returns>An enumerable collection of face location correspond to all faces in specified image.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="image"/> is null.</exception>
+            <exception cref="T:System.ArgumentException"><paramref name="image"/> is empty.</exception>
+            <exception cref="T:System.ObjectDisposedException"><paramref name="image"/> or this object is disposed.</exception>
+        </member>
+        <member name="M:UltraFaceDotNet.UltraFace.DisposeUnmanaged">
+            <summary>
+            Releases all unmanaged resources.
+            </summary>
+        </member>
+        <member name="T:UltraFaceDotNet.UltraFaceParameter">
+            <summary>
+            Represents a parameter of UltraFace. This class cannot be inherited.
+            </summary>
+        </member>
+        <member name="P:UltraFaceDotNet.UltraFaceParameter.BinFilePath">
+            <summary>
+            Gets or sets the file path of the model binary file.
+            </summary>
+        </member>
+        <member name="P:UltraFaceDotNet.UltraFaceParameter.ParamFilePath">
+            <summary>
+            Gets or sets the file path of the param file.
+            </summary>
+        </member>
+        <member name="P:UltraFaceDotNet.UltraFaceParameter.InputWidth">
+            <summary>
+            Gets or sets the pixel width after resized input image.
+            </summary>
+        </member>
+        <member name="P:UltraFaceDotNet.UltraFaceParameter.InputLength">
+            <summary>
+            Gets or sets the pixel height after resized input image.
+            </summary>
+        </member>
+        <member name="P:UltraFaceDotNet.UltraFaceParameter.NumThread">
+            <summary>
+            Gets or sets the count of threads for processing of neural network. The default is 4.
+            </summary>
+        </member>
+        <member name="P:UltraFaceDotNet.UltraFaceParameter.ScoreThreshold">
+            <summary>
+            Gets or sets the score threshold for detecting face. The default is 0.7f.
+            </summary>
+        </member>
+        <member name="P:UltraFaceDotNet.UltraFaceParameter.IouThreshold">
+            <summary>
+            Gets or sets the IoU (Intersection Of Union) threshold for detecting face. The default is 0.3f.
+            </summary>
+        </member>
+        <member name="P:UltraFaceDotNet.UltraFaceParameter.TopK">
+            <summary>
+            Gets or sets the upper limit of detecting face. The default is -1.
+            </summary>
+        </member>
+    </members>
+</doc>
