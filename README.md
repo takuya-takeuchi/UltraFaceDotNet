@@ -52,3 +52,11 @@ This package supports cross platform, Windows, Linux and MacOSX!!
 > 
 > **Principal Use:** Use ncnn interface via .NET. This library is developed by this owner.
 
+#### [ShellProgressBar](https://github.com/Mpdreamz/shellprogressbar/)
+
+> **License:** The MIT License
+>
+> **Author:** Martijn Laarman
+> 
+> **Principal Use:** Visualize progress in Benchmark program.
+

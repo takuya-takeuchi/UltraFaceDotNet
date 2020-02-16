@@ -15,7 +15,7 @@ namespace Demo
         {
             if (args.Length <= 2)
             {
-                Console.WriteLine($"Usage: % s < ncnn bin > < ncnn param > [image files...]", nameof(Demo));
+                Console.WriteLine($"Usage: {nameof(Demo)} < ncnn bin > < ncnn param > [image files...]");
                 return 1;
             }
 
