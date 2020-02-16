@@ -119,6 +119,7 @@ namespace UltraFaceDotNet
             this._UltraFace = new Net();
             this._UltraFace.LoadParam(parameter.ParamFilePath);
             this._UltraFace.LoadModel(parameter.BinFilePath);
+            this._UltraFace.Opt.UseVulkanCompute = parameter.UseGpu;
         }
 
         #endregion
@@ -150,6 +151,15 @@ namespace UltraFaceDotNet
         }
 
         /// <summary>
+        /// Destroy gpu instance.
+        /// </summary>
+        public static void DestroyGpu()
+        {
+            if (Ncnn.IsSupportVulkan)
+                Ncnn.DestroyGpuInstance();
+        }
+
+        /// <summary>
         /// Returns an enumerable collection of face location correspond to all faces in specified image.
         /// </summary>
         /// <param name="image">The image contains faces. The image can contain multiple faces.</param>
@@ -170,6 +180,21 @@ namespace UltraFaceDotNet
                 throw new ArgumentException("Image is empty.", nameof(image));
 
             return faceList.ToArray();
+        }
+
+        /// <summary>
+        /// Initialize gpu instance if the host machine supports.
+        /// </summary>
+        /// <returns><code>true</code> if the host machine supports GPU; otherwise, <code>false</code>.</returns>
+        public static bool InitializeGpu()
+        {
+            if (Ncnn.IsSupportVulkan)
+            {
+                Ncnn.CreateGpuInstance();
+                return true;
+            }
+
+            return false;
         }
 
         #region Overrides 

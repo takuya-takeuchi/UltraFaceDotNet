@@ -101,6 +101,11 @@
             <exception cref="T:System.ArgumentException">The model binary file is null or whitespace. Or the param file is null or whitespace.</exception>
             <exception cref="T:System.IO.FileNotFoundException">The model binary file is not found. Or the param file is not found.</exception>
         </member>
+        <member name="M:UltraFaceDotNet.UltraFace.DestroyGpu">
+            <summary>
+            Destroy gpu instance.
+            </summary>
+        </member>
         <member name="M:UltraFaceDotNet.UltraFace.Detect(NcnnDotNet.Mat)">
             <summary>
             Returns an enumerable collection of face location correspond to all faces in specified image.
@@ -110,6 +115,12 @@
             <exception cref="T:System.ArgumentNullException"><paramref name="image"/> is null.</exception>
             <exception cref="T:System.ArgumentException"><paramref name="image"/> is empty.</exception>
             <exception cref="T:System.ObjectDisposedException"><paramref name="image"/> or this object is disposed.</exception>
+        </member>
+        <member name="M:UltraFaceDotNet.UltraFace.InitializeGpu">
+            <summary>
+            Initialize gpu instance if the host machine supports.
+            </summary>
+            <returns><code>true</code> if the host machine supports GPU; otherwise, <code>false</code>.</returns>
         </member>
         <member name="M:UltraFaceDotNet.UltraFace.DisposeUnmanaged">
             <summary>
@@ -159,6 +170,11 @@
         <member name="P:UltraFaceDotNet.UltraFaceParameter.TopK">
             <summary>
             Gets or sets the upper limit of detecting face. The default is -1.
+            </summary>
+        </member>
+        <member name="P:UltraFaceDotNet.UltraFaceParameter.UseGpu">
+            <summary>
+            Gets or sets a value indicating whether using GPU.
             </summary>
         </member>
     </members>

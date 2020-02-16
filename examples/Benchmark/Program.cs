@@ -26,6 +26,8 @@ namespace Benchmark
             var imagePath = args[2];
             var maxLoop = int.TryParse(args[3], out var ret) ? ret : 1000;
 
+            var canUseGPU = UltraFace.InitializeGpu();
+
             var param = new UltraFaceParameter
             {
                 BinFilePath = binPath,
@@ -33,7 +35,8 @@ namespace Benchmark
                 InputWidth = 320,
                 InputLength = 240,
                 NumThread = 1,
-                ScoreThreshold = 0.7f
+                ScoreThreshold = 0.7f,
+                UseGpu = canUseGPU
             };
 
             using (var ultraFace = UltraFace.Create(param))// config model input
@@ -78,6 +81,8 @@ namespace Benchmark
                 Console.WriteLine($"\t         Detect Face: Total {totalDetect} ms, Avg {totalDetect / maxLoop} ms");
                 Console.WriteLine($"\t    Total Throughput: Total {totalImageLoad + totalDetect} ms, Avg {(totalImageLoad + totalDetect) / maxLoop} ms");
             }
+
+            UltraFace.DestroyGpu();
 
             return 0;
         }

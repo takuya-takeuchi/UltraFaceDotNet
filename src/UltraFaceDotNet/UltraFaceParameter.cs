@@ -81,6 +81,15 @@
             set;
         } = -1;
 
+        /// <summary>
+        /// Gets or sets a value indicating whether using GPU.
+        /// </summary>
+        public bool UseGpu
+        {
+            get;
+            set;
+        }
+
         #endregion
 
     }
