@@ -1,3 +1,6 @@
 [submodule "src/NcnnDotNet"]
 	path = src/NcnnDotNet
 	url = https://github.com/takuya-takeuchi/NcnnDotNet.git
+[submodule "src/Ultra-Light-Fast-Generic-Face-Detector-1MB"]
+	path = src/Ultra-Light-Fast-Generic-Face-Detector-1MB
+	url = https://github.com/Linzaer/Ultra-Light-Fast-Generic-Face-Detector-1MB
