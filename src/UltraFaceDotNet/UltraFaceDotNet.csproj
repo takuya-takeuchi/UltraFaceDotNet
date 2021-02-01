@@ -2,15 +2,38 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <Version>1.0.0</Version>
+    <Authors>Takuya Takeuchi</Authors>
+    <Description>C# version of Ultra-Light-Fast-Generic-Face-Detector-1MB</Description>
+    <Company />
+    <Copyright>© Takuya Takeuchi 2019-2021</Copyright>
+    <Configurations>Debug;Release</Configurations>
+    <Version>1.0.0.1</Version>
+    <RepositoryUrl>https://github.com/takuya-takeuchi/UltraFaceDotNet</RepositoryUrl>
+    <PackageTags>.net machinelearning face-detection</PackageTags>
+    <PackageLicenseUrl></PackageLicenseUrl>
+  
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+  
+    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DocumentationFile>D:\Works\OpenSource\UltraFaceDotNet\src\UltraFaceDotNet\docs\UltraFaceDotNet.xml</DocumentationFile>
+    <DocumentationFile>docs\UltraFaceDotNet.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\NcnnDotNet\src\NcnnDotNet\NcnnDotNet.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\LICENSE.txt">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>

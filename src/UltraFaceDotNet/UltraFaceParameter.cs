@@ -2,7 +2,7 @@
 {
 
     /// <summary>
-    /// Represents a parameter of UltraFace. This class cannot be inherited.
+    /// Represents a parameter of <see cref="UltraFace"/>. This class cannot be inherited.
     /// </summary>
     public sealed class UltraFaceParameter
     {

@@ -118,7 +118,7 @@
         </member>
         <member name="T:UltraFaceDotNet.UltraFaceParameter">
             <summary>
-            Represents a parameter of UltraFace. This class cannot be inherited.
+            Represents a parameter of <see cref="T:UltraFaceDotNet.UltraFace"/>. This class cannot be inherited.
             </summary>
         </member>
         <member name="P:UltraFaceDotNet.UltraFaceParameter.BinFilePath">

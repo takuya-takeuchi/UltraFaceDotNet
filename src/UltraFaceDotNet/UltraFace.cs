@@ -236,28 +236,32 @@ namespace UltraFaceDotNet
 
         private void GenerateBBox(ICollection<FaceInfo> boundingBoxCollection, Mat scores, Mat boxes, float scoreThreshold, int numAnchors)
         {
-            for (var i = 0; i < numAnchors; i++)
-                if (scores.Channel(0)[i * 2 + 1] > scoreThreshold)
-                {
-                    var rects = new FaceInfo();
-                    var xCenter = boxes.Channel(0)[i * 4] * CenterVariance * this._Priors[i][2] + this._Priors[i][0];
-                    var yCenter = boxes.Channel(0)[i * 4 + 1] * CenterVariance * this._Priors[i][3] + this._Priors[i][1];
-                    var w = Math.Exp(boxes.Channel(0)[i * 4 + 2] * SizeVariance) * this._Priors[i][2];
-                    var h = Math.Exp(boxes.Channel(0)[i * 4 + 3] * SizeVariance) * this._Priors[i][3];
+            using (var scoresChannel = scores.Channel(0))
+            using (var boxesChannel = boxes.Channel(0))
+            {
+                for (var i = 0; i < numAnchors; i++)
+                    if (scoresChannel[i * 2 + 1] > scoreThreshold)
+                    {
+                        var rects = new FaceInfo();
+                        var xCenter = boxesChannel[i * 4] * CenterVariance * this._Priors[i][2] + this._Priors[i][0];
+                        var yCenter = boxesChannel[i * 4 + 1] * CenterVariance * this._Priors[i][3] + this._Priors[i][1];
+                        var w = Math.Exp(boxesChannel[i * 4 + 2] * SizeVariance) * this._Priors[i][2];
+                        var h = Math.Exp(boxesChannel[i * 4 + 3] * SizeVariance) * this._Priors[i][3];
 
-                    rects.X1 = Clip(xCenter - w / 2.0, 1) * this._ImageW;
-                    rects.Y1 = Clip(yCenter - h / 2.0, 1) * this._ImageH;
-                    rects.X2 = Clip(xCenter + w / 2.0, 1) * this._ImageW;
-                    rects.Y2 = Clip(yCenter + h / 2.0, 1) * this._ImageH;
-                    rects.Score = Clip(scores.Channel(0)[i * 2 + 1], 1);
+                        rects.X1 = Clip(xCenter - w / 2.0, 1) * this._ImageW;
+                        rects.Y1 = Clip(yCenter - h / 2.0, 1) * this._ImageH;
+                        rects.X2 = Clip(xCenter + w / 2.0, 1) * this._ImageW;
+                        rects.Y2 = Clip(yCenter + h / 2.0, 1) * this._ImageH;
+                        rects.Score = Clip(scoresChannel[i * 2 + 1], 1);
 
-                    boundingBoxCollection.Add(rects);
-                }
+                        boundingBoxCollection.Add(rects);
+                    }
+            }
         }
 
         private void NonMaximumSuppression(List<FaceInfo> input, ICollection<FaceInfo> output, NonMaximumSuppressionMode type = NonMaximumSuppressionMode.Blending)
         {
-            input.Sort((f1, f2) => f1.Score.CompareTo(f2.Score));
+            input.Sort((f1, f2) => f2.Score.CompareTo(f1.Score));
 
             var boxNum = input.Count;
 
