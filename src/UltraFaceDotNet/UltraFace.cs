@@ -261,7 +261,7 @@ namespace UltraFaceDotNet
 
         private void NonMaximumSuppression(List<FaceInfo> input, ICollection<FaceInfo> output, NonMaximumSuppressionMode type = NonMaximumSuppressionMode.Blending)
         {
-            input.Sort((f1, f2) => f1.Score.CompareTo(f2.Score));
+            input.Sort((f1, f2) => f2.Score.CompareTo(f1.Score));
 
             var boxNum = input.Count;
 
