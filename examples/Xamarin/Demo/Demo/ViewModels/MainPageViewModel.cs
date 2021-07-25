@@ -64,41 +64,19 @@ namespace Demo.ViewModels
                 paint.IsAntialias = true;
                 paint.TextEncoding = SKTextEncoding.Utf8;
 
-                string[] classNames =
+                foreach (var face in detectResult.Boxes)
                 {
-                    "background",
-                    "aeroplane",
-                    "bicycle",
-                    "bird",
-                    "boat",
-                    "bottle",
-                    "bus",
-                    "car",
-                    "cat",
-                    "chair",
-                    "cow",
-                    "diningtable",
-                    "dog",
-                    "horse",
-                    "motorbike",
-                    "person",
-                    "pottedplant",
-                    "sheep",
-                    "sofa",
-                    "train",
-                    "tvmonitor"
-                };
-
-                foreach (var box in detectResult.Boxes)
-                {
+                    var pt1 = new Point<float>(face.X1, face.Y1);
+                    var pt2 = new Point<float>(face.X2, face.Y2);
+                    Cv2.Rectangle(frame, pt1, pt2, new Scalar<double>(0, 255, 0), 2);
+                    var w = pt2.X - pt1.X;
+                    var h = pt2.Y - pt1.Y;
+                    
                     paint.Color = SKColors.Red;
                     paint.Style = SKPaintStyle.Stroke;
-                    surface.Canvas.DrawRect(box.Rect.X, box.Rect.Y, box.Rect.Width, box.Rect.Height, paint);
-
-                    paint.Color = SKColors.Black;
-                    paint.Style = SKPaintStyle.Fill;
-                    surface.Canvas.DrawText(classNames[box.Label], new SKPoint(box.Rect.X + 5, box.Rect.Y + 5), paint);
+                    surface.Canvas.DrawRect(pt1.X, pt1.Y, w, h, paint);
                 }
+                
                 this.SelectedImage = ImageSource.FromStream(() => surface.Snapshot().Encode().AsStream());
             });
         }

@@ -8,18 +8,18 @@ namespace Demo.Models
 
         #region Constructors
 
-        public DetectResult(int width, int height, IEnumerable<Object> boxes)
+        public DetectResult(int width, int height, IEnumerable<FaceInfo> boxes)
         {
             this.Width = width;
             this.Height = height;
-            this.Boxes = new List<Object>(boxes);
+            this.Boxes = new List<FaceInfo>(boxes);
         }
 
         #endregion
 
         #region Properties
 
-        public IReadOnlyCollection<Object> Boxes
+        public IReadOnlyCollection<FaceInfo> Boxes
         {
             get;
         }

@@ -40,20 +40,21 @@ namespace Demo.Services
 
         public DetectResult Detect(byte[] file)
         {
-            using var m = Cv2.ImDecode(file, CvLoadImage.Grayscale);
-            if (m.IsEmpty)
+            using var frame = Cv2.ImDecode(file, CvLoadImage.Grayscale);
+            if (frame.IsEmpty)
                 throw new NotSupportedException("This file is not supported!!");
 
             if (Ncnn.IsSupportVulkan)
                 Ncnn.CreateGpuInstance();
 
-            var objects = new List<Object>();
-            DetectYoloV3(m, objects);
+            using var inMat = NcnnDotNet.Mat.FromPixels(frame.Data, NcnnDotNet.PixelType.Bgr2Rgb, frame.Cols, frame.Rows);
+
+            var faceInfos = ultraFace.Detect(inMat).ToArray();
 
             if (Ncnn.IsSupportVulkan)
                 Ncnn.DestroyGpuInstance();
 
-            return new DetectResult(m.Cols, m.Rows, objects);
+            return new DetectResult(frame.Cols, m.Rows, faceInfos);
         }
 
 
