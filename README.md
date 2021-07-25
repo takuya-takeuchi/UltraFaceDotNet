@@ -8,7 +8,7 @@ This package supports cross platform, Windows, MacOS, Linux, iOS and Android!!
 |Package|OS|x86|x64|ARM|ARM64|Nuget|
 |---|---|---|---|---|---|---|
 |UltraFaceDotNet (CPU)|Windows|-|✓|-|-|[![NuGet version](https://img.shields.io/nuget/v/UltraFaceDotNet.svg)](https://www.nuget.org/packages/UltraFaceDotNet)|
-||Linux|-|✓|-|-|[![NuGet version](https://img.shields.io/nuget/v/UltraFaceDotNet.svg)](https://www.nuget.org/packages/UltraFaceDotNet)|
+||Linux|-|✓|-|✓|[![NuGet version](https://img.shields.io/nuget/v/UltraFaceDotNet.svg)](https://www.nuget.org/packages/UltraFaceDotNet)|
 ||OSX|-|✓|-|-|[![NuGet version](https://img.shields.io/nuget/v/UltraFaceDotNet.svg)](https://www.nuget.org/packages/UltraFaceDotNet)|
 |UltraFaceDotNet (GPU)|Windows|-|✓|-|-|[![NuGet version](https://img.shields.io/nuget/v/UltraFaceDotNet.GPU.svg)](https://www.nuget.org/packages/UltraFaceDotNet.GPU)|
 ||Linux|-|✓|-|-|[![NuGet version](https://img.shields.io/nuget/v/UltraFaceDotNet.GPU.svg)](https://www.nuget.org/packages/UltraFaceDotNet.GPU)|
@@ -19,7 +19,14 @@ This package supports cross platform, Windows, MacOS, Linux, iOS and Android!!
 
 ## Demo
 
+#### Console (using OpenCV UI)
+
 <img src="examples/Demo/images/image.jpg" width="480"/>
+
+#### YoloV3 on Xamarin.Android, iOS and UWP
+
+<img src="examples/Xamarin/Demo/images/android.png" width="300" /> <img src="examples/Xamarin/Demo/images/ios.png" width="300" />
+<img src="examples/Xamarin/Demo/images/uwp.png" width="600" />
 
 ## Dependencies Libraries and Products
 
