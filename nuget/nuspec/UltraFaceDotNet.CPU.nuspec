@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>UltraFaceDotNet</id>
-    <version>1.0.0.1</version>
+    <version>1.0.0.2</version>
     <title>UltraFaceDotNet</title>
     <authors>Takuya Takeuchi</authors>
     <owners>Takuya Takeuchi</owners>
@@ -17,7 +17,7 @@
     <serviceable>true</serviceable>
     <dependencies>
       <group targetFramework="netstandard2.0">
-        <dependency id="NcnnDotNet" version="0.0.0.20200106" />
+        <dependency id="NcnnDotNet" version="0.0.0.20210723" />
       </group>
     </dependencies>
   </metadata>
