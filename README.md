@@ -3,7 +3,7 @@
 C# version of Ultra-Light-Fast-Generic-Face-Detector-1MB
 This repository is porting https://github.com/Linzaer/Ultra-Light-Fast-Generic-Face-Detector-1MB by C#.
 
-This package supports cross platform, Windows, Linux and MacOSX!!
+This package supports cross platform, Windows, MacOS, Linux, iOS and Android!!
 
 |Package|OS|x86|x64|ARM|ARM64|Nuget|
 |---|---|---|---|---|---|---|
@@ -12,7 +12,10 @@ This package supports cross platform, Windows, Linux and MacOSX!!
 ||OSX|-|✓|-|-|[![NuGet version](https://img.shields.io/nuget/v/UltraFaceDotNet.svg)](https://www.nuget.org/packages/UltraFaceDotNet)|
 |UltraFaceDotNet (GPU)|Windows|-|✓|-|-|[![NuGet version](https://img.shields.io/nuget/v/UltraFaceDotNet.GPU.svg)](https://www.nuget.org/packages/UltraFaceDotNet.GPU)|
 ||Linux|-|✓|-|-|[![NuGet version](https://img.shields.io/nuget/v/UltraFaceDotNet.GPU.svg)](https://www.nuget.org/packages/UltraFaceDotNet.GPU)|
-||OSX|-|✓|-|-|[![NuGet version](https://img.shields.io/nuget/v/UltraFaceDotNet.GPU.svg)](https://www.nuget.org/packages/NcnnDotNet.GPU)|
+||OSX|-|✓|-|-|[![NuGet version](https://img.shields.io/nuget/v/UltraFaceDotNet.GPU.svg)](https://www.nuget.org/packages/UltraFaceDotNet.GPU)|
+|UltraFaceDotNet (Xamarin)|UWP|✓|✓|✓|✓|[![NuGet version](https://img.shields.io/nuget/v/UltraFaceDotNet.Xamarin.svg)](https://www.nuget.org/packages/UltraFaceDotNet.Xamarin)|
+||Android|✓|✓|✓|✓|[![NuGet version](https://img.shields.io/nuget/v/UltraFaceDotNet.Xamarin.svg)](https://www.nuget.org/packages/UltraFaceDotNet.Xamarin)|
+||iOS|-|✓|-|✓|[![NuGet version](https://img.shields.io/nuget/v/UltraFaceDotNet.Xamarin.svg)](https://www.nuget.org/packages/UltraFaceDotNet.Xamarin)|
 
 ## Demo
 
@@ -34,7 +37,7 @@ This package supports cross platform, Windows, Linux and MacOSX!!
 >
 > **Author:** THL A29. Limited, a Tencent company
 > 
-> **Principal Use:** A high-performance neural network inference framework optimized for the mobile platform in C++. Main goal of NcnnDotNet is what wraps ncnn by C#.
+> **Principal Use:** A high-performance neural network inference framework optimized for the mobile platform in C++. Main goal of UltraFaceDotNet is what wraps ncnn by C#.
 
 #### [OpenCV](https://opencv.org/)
 
@@ -44,7 +47,7 @@ This package supports cross platform, Windows, Linux and MacOSX!!
 > 
 > **Principal Use:** Uses to read and show image data.
 
-#### [NcnnDotNet](https://github.com/takuya-takeuchi/NcnnDotNet/)
+#### [UltraFaceDotNet](https://github.com/takuya-takeuchi/UltraFaceDotNet/)
 
 > **License:** The MIT License
 >

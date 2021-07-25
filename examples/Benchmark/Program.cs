@@ -64,11 +64,13 @@ namespace Benchmark
                         using var inMat = NcnnDotNet.Mat.FromPixels(frame.Data, NcnnDotNet.PixelType.Bgr2Rgb, frame.Cols, frame.Rows);
                         imageStopWatch.Stop();
                         totalImageLoad += imageStopWatch.ElapsedMilliseconds;
+                        imageStopWatch.Reset();
 
                         detectStopWatch.Start();
                         var _ = ultraFace.Detect(inMat).ToArray();
                         detectStopWatch.Stop();
                         totalDetect += detectStopWatch.ElapsedMilliseconds;
+                        detectStopWatch.Reset();
 
                         pbar.Tick($"Step {loop} of {maxLoop}");
                     }
