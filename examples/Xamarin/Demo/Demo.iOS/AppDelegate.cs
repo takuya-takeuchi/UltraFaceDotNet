@@ -1,8 +1,8 @@
-﻿using Foundation;
+﻿using Demo.Services;
+using Foundation;
 using Prism;
 using Prism.Ioc;
 using UIKit;
-using Demo.Services;
 
 namespace Demo.iOS
 {

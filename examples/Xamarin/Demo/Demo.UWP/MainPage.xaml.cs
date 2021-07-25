@@ -1,6 +1,6 @@
-﻿using Prism;
+﻿using Demo.Services;
+using Prism;
 using Prism.Ioc;
-using Demo.Services;
 using FileAccessService = Demo.UWP.Services.FileAccessService;
 
 namespace Demo.UWP

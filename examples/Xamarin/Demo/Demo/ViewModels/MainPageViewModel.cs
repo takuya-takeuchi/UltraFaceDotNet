@@ -2,8 +2,8 @@
 using Prism.Commands;
 using Prism.Navigation;
 using SkiaSharp;
-using Xamarin.Essentials;
 using Xamarin.Forms;
+
 using Demo.Services;
 using Demo.Services.Interfaces;
 using Demo.ViewModels.Interfaces;
@@ -29,7 +29,7 @@ namespace Demo.ViewModels
                                  IDetectService detectService)
             : base(navigationService)
         {
-            this.Title = "Yolo V3";
+            this.Title = "Demo";
 
             this._FileAccessService = fileAccessService;
             this._DetectService = detectService;
@@ -66,15 +66,12 @@ namespace Demo.ViewModels
 
                 foreach (var face in detectResult.Boxes)
                 {
-                    var pt1 = new Point<float>(face.X1, face.Y1);
-                    var pt2 = new Point<float>(face.X2, face.Y2);
-                    Cv2.Rectangle(frame, pt1, pt2, new Scalar<double>(0, 255, 0), 2);
-                    var w = pt2.X - pt1.X;
-                    var h = pt2.Y - pt1.Y;
+                    var w = face.X2 - face.X1;
+                    var h = face.Y2 - face.Y1;
                     
                     paint.Color = SKColors.Red;
                     paint.Style = SKPaintStyle.Stroke;
-                    surface.Canvas.DrawRect(pt1.X, pt1.Y, w, h, paint);
+                    surface.Canvas.DrawRect(face.X1, face.Y1, w, h, paint);
                 }
                 
                 this.SelectedImage = ImageSource.FromStream(() => surface.Snapshot().Encode().AsStream());

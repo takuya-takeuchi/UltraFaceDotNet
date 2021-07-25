@@ -1,9 +1,9 @@
 ﻿using Android.App;
 using Android.Content.PM;
 using Android.OS;
+using Demo.Services;
 using Prism;
 using Prism.Ioc;
-using Demo.Services;
 
 namespace Demo.Droid
 {

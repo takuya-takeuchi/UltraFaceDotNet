@@ -1,13 +1,13 @@
+using Demo.Services;
+using Demo.Services.Interfaces;
+using Demo.ViewModels;
+using Demo.Views;
 using Prism;
 using Prism.Ioc;
 using Xamarin.Essentials.Implementation;
 using Xamarin.Essentials.Interfaces;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using Demo.Services;
-using Demo.Services.Interfaces;
-using Demo.ViewModels;
-using Demo.Views;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace Demo
