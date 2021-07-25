@@ -36,6 +36,14 @@ namespace Benchmark
                 ScoreThreshold = 0.7f
             };
 
+            if (NcnnDotNet.Ncnn.IsSupportVulkan)
+            {
+                Console.WriteLine("Initializes GPU");
+                NcnnDotNet.Ncnn.CreateGpuInstance();
+                var index = NcnnDotNet.Ncnn.GetDefaultGpuIndex();
+                Console.WriteLine($"\tGPU is {index}");
+            }
+
             using (var ultraFace = UltraFace.Create(param))// config model input
             {
                 Console.WriteLine($"Processing {imagePath}");
@@ -79,6 +87,12 @@ namespace Benchmark
                 Console.WriteLine($"\tConvert Image to Mat: Total {totalImageLoad} ms, Avg {totalImageLoad / maxLoop} ms");
                 Console.WriteLine($"\t         Detect Face: Total {totalDetect} ms, Avg {totalDetect / maxLoop} ms");
                 Console.WriteLine($"\t    Total Throughput: Total {totalImageLoad + totalDetect} ms, Avg {(totalImageLoad + totalDetect) / maxLoop} ms");
+            }
+
+            if (NcnnDotNet.Ncnn.IsSupportVulkan)
+            {
+                Console.WriteLine("Uninitializes GPU");
+                NcnnDotNet.Ncnn.DestroyGpuInstance();
             }
 
             return 0;
