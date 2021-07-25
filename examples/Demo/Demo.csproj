@@ -10,7 +10,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\UltraFaceDotNet\UltraFaceDotNet.csproj" />
+    <PackageReference Include="UltraFaceDotNet.GPU" Version="1.0.0" />
   </ItemGroup>
 
 </Project>

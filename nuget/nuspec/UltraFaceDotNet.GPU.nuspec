@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>UltraFaceDotNet.GPU</id>
-    <version>1.0.0.0</version>
+    <version>1.0.0.2</version>
     <title>UltraFaceDotNet for GPU</title>
     <authors>Takuya Takeuchi</authors>
     <owners>Takuya Takeuchi</owners>
@@ -17,7 +17,7 @@
     <serviceable>true</serviceable>
     <dependencies>
       <group targetFramework="netstandard2.0">
-        <dependency id="NcnnDotNet.GPU" version="0.0.0.20200106" />
+        <dependency id="NcnnDotNet.GPU" version="0.0.0.20210723" />
       </group>
     </dependencies>
   </metadata>
